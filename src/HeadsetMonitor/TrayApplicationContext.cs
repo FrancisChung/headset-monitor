@@ -139,10 +139,39 @@ internal sealed class TrayApplicationContext : ApplicationContext
     }
 
     private void ShowDiagnostics() => MessageBox.Show(
-        $"HeadsetControl version: {_backendVersion ?? "unknown"}{Environment.NewLine}" +
-        $"JSON API version: {_apiVersion ?? "unknown"}{Environment.NewLine}" +
-        $"Last error: {_lastError ?? "none"}",
+        BuildDiagnosticsText(),
         "Headset Monitor diagnostics", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+    private string BuildDiagnosticsText()
+    {
+        var lines = new List<string>
+        {
+            "HyperX direct HID: enabled",
+            "Protocol: auto94 v2.0",
+            string.Empty
+        };
+
+        if (_apiVersion is null)
+        {
+            lines.Add("HeadsetControl: unavailable");
+            lines.Add("JSON API version: not applicable");
+        }
+        else
+        {
+            lines.Add("HeadsetControl: available");
+            lines.Add($"Version: {_backendVersion ?? "unknown"}");
+            lines.Add($"JSON API version: {_apiVersion}");
+        }
+
+        if (_lastError is not null)
+        {
+            lines.Add(string.Empty);
+            lines.Add("Backend diagnostics:");
+            lines.Add(_lastError);
+        }
+
+        return string.Join(Environment.NewLine, lines);
+    }
 
     private void ApplyPollingInterval()
     {
