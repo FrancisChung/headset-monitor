@@ -1,4 +1,4 @@
-# Headset Battery Monitor
+# Headset Monitor
 
 A Windows notification-area application for monitoring the HyperX Cloud II Wireless, HyperX Cloud III S Wireless, and Logitech G933.
 
