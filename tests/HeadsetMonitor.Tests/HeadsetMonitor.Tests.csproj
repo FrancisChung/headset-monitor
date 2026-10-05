@@ -9,7 +9,7 @@
     <PackageReference Include="NUnit3TestAdapter" Version="5.0.0" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="../../src/HeadsetBatteryMonitor.Backends/HeadsetBatteryMonitor.Backends.csproj" />
-    <ProjectReference Include="../../src/HeadsetBatteryMonitor.Core/HeadsetBatteryMonitor.Core.csproj" />
+    <ProjectReference Include="../../src/HeadsetMonitor.Backends/HeadsetMonitor.Backends.csproj" />
+    <ProjectReference Include="../../src/HeadsetMonitor.Core/HeadsetMonitor.Core.csproj" />
   </ItemGroup>
 </Project>

@@ -1,4 +1,4 @@
-# Headset Battery Monitor — design and implementation plan
+# Headset Monitor — design and implementation plan
 
 **Date:** 28 September 2026  
 **Target:** Windows 10 x64; also test Windows 11 if available  
@@ -120,11 +120,11 @@ Automate JSON parsing, state mapping and polling/timeout behavior with fixture p
 ## 8. Suggested repository structure
 
 ```text
-HeadsetBatteryMonitor.sln
-src/HeadsetBatteryMonitor/          # WinForms tray, coordinator, settings
-src/HeadsetBatteryMonitor.Core/     # Snapshot, status and parsing contracts
-src/HeadsetBatteryMonitor.Backends/ # Direct HyperX HID and HeadsetControl adapters
-tests/HeadsetBatteryMonitor.Tests/  # JSON and error-state fixtures
+HeadsetMonitor.slnx
+src/HeadsetMonitor/          # WinForms tray, coordinator, settings
+src/HeadsetMonitor.Core/     # Snapshot, status and parsing contracts
+src/HeadsetMonitor.Backends/ # Direct HyperX HID and HeadsetControl adapters
+tests/HeadsetMonitor.Tests/  # JSON and error-state fixtures
 docs/hardware-notes.md              # Actual IDs, backend versions, observations
 docs/rig800hd-research.md           # Later only; evidence and protocol findings
 LICENSES/                           # Notices and applicable third-party licenses
@@ -132,7 +132,7 @@ LICENSES/                           # Notices and applicable third-party license
 
 ## 9. Copy-paste prompt for Codex
 
-> Implement milestones M0 through M2 in `Headset_Battery_Monitor_Design_and_Implementation.md` as a Windows 10 tray application. First inspect the repository and report the exact HeadsetControl backend version and actual connected-device evidence available. Build the C# WinForms `net10.0-windows` UI, JSON CLI adapter, scheduler and tests specified in the plan. Do not invent headset percentages, support IDs, charging flags or successful hardware test results. If there is no Windows machine or hardware available in your environment, finish the implementation and automated tests, provide exact Windows 10 commands and a short hardware verification checklist, and label hardware acceptance as pending. Make a distributable self-contained x64 build when a Windows build environment is available. Keep the RIG 800HD as a later milestone; do not send speculative HID reports to it. Preserve third-party license notices. At the end, report changed files, test results, hardware evidence, unresolved issues and the next concrete action.
+> Implement milestones M0 through M2 in `Headset_Monitor_Design_and_Implementation.md` as a Windows 10 tray application. First inspect the repository and report the exact HeadsetControl backend version and actual connected-device evidence available. Build the C# WinForms `net10.0-windows` UI, JSON CLI adapter, scheduler and tests specified in the plan. Do not invent headset percentages, support IDs, charging flags or successful hardware test results. If there is no Windows machine or hardware available in your environment, finish the implementation and automated tests, provide exact Windows 10 commands and a short hardware verification checklist, and label hardware acceptance as pending. Make a distributable self-contained x64 build when a Windows build environment is available. Keep the RIG 800HD as a later milestone; do not send speculative HID reports to it. Preserve third-party license notices. At the end, report changed files, test results, hardware evidence, unresolved issues and the next concrete action.
 
 ## Primary references
 

@@ -1,7 +1,7 @@
 using System.Diagnostics;
-using HeadsetBatteryMonitor.Core;
+using HeadsetMonitor.Core;
 
-namespace HeadsetBatteryMonitor.Backends;
+namespace HeadsetMonitor.Backends;
 
 public sealed class HeadsetControlCliSource(
     string executablePath,

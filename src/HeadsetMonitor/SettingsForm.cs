@@ -1,6 +1,6 @@
-using HeadsetBatteryMonitor.Core;
+using HeadsetMonitor.Core;
 
-namespace HeadsetBatteryMonitor;
+namespace HeadsetMonitor;
 
 internal sealed class SettingsForm : Form
 {
@@ -17,7 +17,7 @@ internal sealed class SettingsForm : Form
 
     public SettingsForm(AppSettings current)
     {
-        Text = "Headset Battery Monitor Settings";
+        Text = "Headset Monitor Settings";
         Icon = ApplicationArtwork.LoadApplicationIcon();
         FormBorderStyle = FormBorderStyle.FixedDialog;
         MaximizeBox = false;

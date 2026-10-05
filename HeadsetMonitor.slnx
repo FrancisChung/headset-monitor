@@ -1,0 +1,10 @@
+<Solution>
+  <Folder Name="/src/">
+    <Project Path="src/HeadsetMonitor/HeadsetMonitor.csproj" />
+    <Project Path="src/HeadsetMonitor.Backends/HeadsetMonitor.Backends.csproj" />
+    <Project Path="src/HeadsetMonitor.Core/HeadsetMonitor.Core.csproj" />
+  </Folder>
+  <Folder Name="/tests/">
+    <Project Path="tests/HeadsetMonitor.Tests/HeadsetMonitor.Tests.csproj" />
+  </Folder>
+</Solution>

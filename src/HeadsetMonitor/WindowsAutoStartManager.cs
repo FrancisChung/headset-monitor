@@ -1,11 +1,11 @@
 using Microsoft.Win32;
 
-namespace HeadsetBatteryMonitor;
+namespace HeadsetMonitor;
 
 internal sealed class WindowsAutoStartManager
 {
     private const string RunKeyPath = @"Software\Microsoft\Windows\CurrentVersion\Run";
-    private const string ValueName = "HeadsetBatteryMonitor";
+    private const string ValueName = "HeadsetMonitor";
 
     public bool IsEnabled()
     {

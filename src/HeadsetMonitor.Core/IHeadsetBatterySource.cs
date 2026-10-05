@@ -1,4 +1,4 @@
-namespace HeadsetBatteryMonitor.Core;
+namespace HeadsetMonitor.Core;
 
 public interface IHeadsetBatterySource
 {

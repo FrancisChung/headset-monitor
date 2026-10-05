@@ -1,7 +1,7 @@
-using HeadsetBatteryMonitor.Backends;
-using HeadsetBatteryMonitor.Core;
+using HeadsetMonitor.Backends;
+using HeadsetMonitor.Core;
 
-namespace HeadsetBatteryMonitor;
+namespace HeadsetMonitor;
 
 internal sealed class TrayApplicationContext : ApplicationContext
 {
@@ -128,7 +128,7 @@ internal sealed class TrayApplicationContext : ApplicationContext
             or InvalidOperationException)
         {
             MessageBox.Show($"The startup setting could not be changed.{Environment.NewLine}{Environment.NewLine}{exception.Message}",
-                "Headset Battery Monitor", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                "Headset Monitor", MessageBoxButtons.OK, MessageBoxIcon.Error);
             return;
         }
 
@@ -142,7 +142,7 @@ internal sealed class TrayApplicationContext : ApplicationContext
         $"HeadsetControl version: {_backendVersion ?? "unknown"}{Environment.NewLine}" +
         $"JSON API version: {_apiVersion ?? "unknown"}{Environment.NewLine}" +
         $"Last error: {_lastError ?? "none"}",
-        "Headset Battery Monitor diagnostics", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        "Headset Monitor diagnostics", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
     private void ApplyPollingInterval()
     {

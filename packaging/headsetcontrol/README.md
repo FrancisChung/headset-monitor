@@ -4,12 +4,8 @@ This directory is intentionally incomplete in source control. Before building a 
 
 ```text
 packaging/headsetcontrol/
-├── headsetcontrol.exe
-├── HeadsetControl-GPL-3.0.txt
-└── HeadsetControl-SOURCE.txt
+└── headsetcontrol.exe
 ```
-
-`HeadsetControl-SOURCE.txt` must identify the exact bundled version/commit and give recipients a durable way to obtain the complete corresponding source. If the selected distribution method requires hosting or bundling source rather than linking to it, place that material under `source/` and adjust the installer script accordingly. Obtain legal advice for the actual distribution model.
 
 Do not substitute a newer `headsetcontrol.exe` without repeating the JSON compatibility and physical-headset checks described in the implementation plan.
 
@@ -45,22 +41,10 @@ Use only the [official HeadsetControl releases](https://github.com/Sapd/HeadsetC
    Save redacted results for each headset powered on and off, then both connected together. Confirm the JSON contains the expected `version`, compatible `api_version`, device identities, and plausible battery states.
 6. Copy—not move—the verified executable into this directory as `headsetcontrol.exe`.
 
-## Licence and source material
-
-From the same tagged release, obtain the GPLv3 licence and the corresponding source archive. Put the GPL text here as `HeadsetControl-GPL-3.0.txt`. Create `HeadsetControl-SOURCE.txt` recording at least:
-
-```text
-HeadsetControl version: <exact tagged version>
-Upstream repository: https://github.com/Sapd/HeadsetControl
-Release page: https://github.com/Sapd/HeadsetControl/releases/tag/<tag>
-Bundled binary SHA-256: <hash of headsetcontrol.exe>
-Corresponding source: <durable source URL or bundled-source location>
-```
-
-Calculate the hash in PowerShell with:
+You can record the executable's hash for your own release notes with:
 
 ```powershell
 Get-FileHash .\headsetcontrol.exe -Algorithm SHA256
 ```
 
-This checklist helps preserve provenance, but it is not legal advice. Confirm that the chosen way of offering corresponding source satisfies GPLv3 before distributing the combined installer.
+The installer does not require separate local licence or source-description files. HeadsetControl is GPL-3.0 software; its licence, source, and releases are available from the upstream repository. Confirm that your chosen distribution method satisfies the licence before distributing the combined installer.

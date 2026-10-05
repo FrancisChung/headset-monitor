@@ -1,5 +1,9 @@
 # Third-party notices
 
+## HeadsetControl
+
+This application can bundle [HeadsetControl](https://github.com/Sapd/HeadsetControl) for headset communication. HeadsetControl is licensed under GPL-3.0. Its licence, corresponding source code, and release downloads are available from the linked upstream repository.
+
 ## HyperX-Cloud-2-Battery-Monitor
 
 The direct HyperX HID device identities, endpoint-selection rules, request bytes, and response offsets are derived from [auto94/HyperX-Cloud-2-Battery-Monitor](https://github.com/auto94/HyperX-Cloud-2-Battery-Monitor), release v2.0.

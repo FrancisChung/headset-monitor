@@ -1,6 +1,6 @@
-using HeadsetBatteryMonitor.Core;
+using HeadsetMonitor.Core;
 
-namespace HeadsetBatteryMonitor.Tests;
+namespace HeadsetMonitor.Tests;
 
 public sealed class AppSettingsTests
 {

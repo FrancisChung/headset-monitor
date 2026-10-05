@@ -1,9 +1,9 @@
-using HeadsetBatteryMonitor.Core;
+using HeadsetMonitor.Core;
 using HidSharp;
 using Microsoft.Win32.SafeHandles;
 using System.Runtime.InteropServices;
 
-namespace HeadsetBatteryMonitor.Backends;
+namespace HeadsetMonitor.Backends;
 
 // Protocol bytes and endpoint-selection behavior are derived from auto94's
 // MIT-licensed HyperX-Cloud-2-Battery-Monitor v2.0 implementation.

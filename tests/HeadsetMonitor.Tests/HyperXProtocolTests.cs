@@ -1,6 +1,6 @@
-using HeadsetBatteryMonitor.Backends;
+using HeadsetMonitor.Backends;
 
-namespace HeadsetBatteryMonitor.Tests;
+namespace HeadsetMonitor.Tests;
 
 public sealed class HyperXProtocolTests
 {

@@ -1,6 +1,6 @@
 <Project Sdk="Microsoft.NET.Sdk">
   <ItemGroup>
-    <ProjectReference Include="../HeadsetBatteryMonitor.Core/HeadsetBatteryMonitor.Core.csproj" />
+    <ProjectReference Include="../HeadsetMonitor.Core/HeadsetMonitor.Core.csproj" />
     <PackageReference Include="HidSharp" Version="2.6.4" />
   </ItemGroup>
 </Project>

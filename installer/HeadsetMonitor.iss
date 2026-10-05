@@ -11,8 +11,8 @@
   #define OutputDir "..\artifacts\installer"
 #endif
 
-#define AppName "Headset Battery Monitor"
-#define AppExeName "HeadsetBatteryMonitor.exe"
+#define AppName "Headset Monitor"
+#define AppExeName "HeadsetMonitor.exe"
 #define AppPublisher "Francis Chung"
 
 [Setup]
@@ -20,14 +20,14 @@ AppId={{3BBFA1D7-457A-448C-8BC1-82287D49AFAC}
 AppName={#AppName}
 AppVersion={#AppVersion}
 AppPublisher={#AppPublisher}
-DefaultDirName={localappdata}\Programs\HeadsetBatteryMonitor
+DefaultDirName={localappdata}\Programs\HeadsetMonitor
 DefaultGroupName={#AppName}
 DisableProgramGroupPage=yes
 PrivilegesRequired=lowest
 ArchitecturesAllowed=x64compatible
 ArchitecturesInstallIn64BitMode=x64compatible
 OutputDir={#OutputDir}
-OutputBaseFilename=HeadsetBatteryMonitor-{#AppVersion}-win-x64-setup
+OutputBaseFilename=HeadsetMonitor-{#AppVersion}-win-x64-setup
 SetupIconFile=..\Icons\headphone.ico
 UninstallDisplayIcon={app}\{#AppExeName}
 LicenseFile=..\LICENSE
@@ -49,12 +49,10 @@ Name: "english"; MessagesFile: "compiler:Default.isl"
 Name: "startmenu"; Description: "Create a Start Menu shortcut"; GroupDescription: "Shortcuts:"; Flags: checkedonce
 
 [Files]
-Source: "{#SourceDir}\HeadsetBatteryMonitor.exe"; DestDir: "{app}"; Flags: ignoreversion
+Source: "{#SourceDir}\HeadsetMonitor.exe"; DestDir: "{app}"; Flags: ignoreversion
 Source: "{#HeadsetControlDir}\headsetcontrol.exe"; DestDir: "{app}"; Flags: ignoreversion
-Source: "..\LICENSE"; DestDir: "{app}"; DestName: "HeadsetBatteryMonitor-MIT.txt"; Flags: ignoreversion
+Source: "..\LICENSE"; DestDir: "{app}"; DestName: "HeadsetMonitor-MIT.txt"; Flags: ignoreversion
 Source: "..\THIRD_PARTY_NOTICES.md"; DestDir: "{app}\LICENSES"; Flags: ignoreversion
-Source: "{#HeadsetControlDir}\HeadsetControl-GPL-3.0.txt"; DestDir: "{app}\LICENSES"; Flags: ignoreversion
-Source: "{#HeadsetControlDir}\HeadsetControl-SOURCE.txt"; DestDir: "{app}\LICENSES"; Flags: ignoreversion
 
 [Icons]
 Name: "{group}\{#AppName}"; Filename: "{app}\{#AppExeName}"; Tasks: startmenu
@@ -66,5 +64,5 @@ Filename: "{app}\{#AppExeName}"; Description: "Launch {#AppName}"; Flags: nowait
 procedure CurUninstallStepChanged(CurUninstallStep: TUninstallStep);
 begin
   if CurUninstallStep = usUninstall then
-    RegDeleteValue(HKCU, 'Software\Microsoft\Windows\CurrentVersion\Run', 'HeadsetBatteryMonitor');
+    RegDeleteValue(HKCU, 'Software\Microsoft\Windows\CurrentVersion\Run', 'HeadsetMonitor');
 end;

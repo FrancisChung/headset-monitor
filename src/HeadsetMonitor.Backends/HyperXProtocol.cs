@@ -1,4 +1,4 @@
-namespace HeadsetBatteryMonitor.Backends;
+namespace HeadsetMonitor.Backends;
 
 public sealed record HyperXDeviceProtocol(
     ushort VendorId,

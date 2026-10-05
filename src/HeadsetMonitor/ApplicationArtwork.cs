@@ -1,4 +1,4 @@
-namespace HeadsetBatteryMonitor;
+namespace HeadsetMonitor;
 
 internal static class ApplicationArtwork
 {

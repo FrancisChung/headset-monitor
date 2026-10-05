@@ -4,15 +4,15 @@
     <TargetFramework>net10.0-windows</TargetFramework>
     <UseWindowsForms>true</UseWindowsForms>
     <EnableWindowsTargeting>true</EnableWindowsTargeting>
-    <AssemblyName>HeadsetBatteryMonitor</AssemblyName>
+    <AssemblyName>HeadsetMonitor</AssemblyName>
     <Version>0.1.0</Version>
     <ApplicationIcon>../../Icons/headphone.ico</ApplicationIcon>
   </PropertyGroup>
   <ItemGroup>
-    <EmbeddedResource Include="../../Icons/headphone.png" LogicalName="HeadsetBatteryMonitor.Icons.headphone.png" />
+    <EmbeddedResource Include="../../Icons/headphone.png" LogicalName="HeadsetMonitor.Icons.headphone.png" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="../HeadsetBatteryMonitor.Backends/HeadsetBatteryMonitor.Backends.csproj" />
-    <ProjectReference Include="../HeadsetBatteryMonitor.Core/HeadsetBatteryMonitor.Core.csproj" />
+    <ProjectReference Include="../HeadsetMonitor.Backends/HeadsetMonitor.Backends.csproj" />
+    <ProjectReference Include="../HeadsetMonitor.Core/HeadsetMonitor.Core.csproj" />
   </ItemGroup>
 </Project>

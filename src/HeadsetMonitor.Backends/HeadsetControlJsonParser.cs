@@ -1,8 +1,8 @@
 using System.Globalization;
 using System.Text.Json;
-using HeadsetBatteryMonitor.Core;
+using HeadsetMonitor.Core;
 
-namespace HeadsetBatteryMonitor.Backends;
+namespace HeadsetMonitor.Backends;
 
 public sealed class HeadsetControlJsonParser
 {

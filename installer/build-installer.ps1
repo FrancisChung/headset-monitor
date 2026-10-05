@@ -12,21 +12,14 @@ if ([string]::IsNullOrWhiteSpace($HeadsetControlDirectory)) {
     $HeadsetControlDirectory = Join-Path $repositoryRoot 'packaging\headsetcontrol'
 }
 
-$requiredBackendFiles = @(
-    'headsetcontrol.exe',
-    'HeadsetControl-GPL-3.0.txt',
-    'HeadsetControl-SOURCE.txt'
-)
-foreach ($fileName in $requiredBackendFiles) {
-    $path = Join-Path $HeadsetControlDirectory $fileName
-    if (-not (Test-Path -LiteralPath $path -PathType Leaf)) {
-        throw "Required packaging input is missing: $path"
-    }
+$headsetControlExecutable = Join-Path $HeadsetControlDirectory 'headsetcontrol.exe'
+if (-not (Test-Path -LiteralPath $headsetControlExecutable -PathType Leaf)) {
+    throw "Required packaging input is missing: $headsetControlExecutable"
 }
 
 $publishDirectory = Join-Path $repositoryRoot 'artifacts\publish\win-x64'
 $installerOutput = Join-Path $repositoryRoot 'artifacts\installer'
-$project = Join-Path $repositoryRoot 'src\HeadsetBatteryMonitor\HeadsetBatteryMonitor.csproj'
+$project = Join-Path $repositoryRoot 'src\HeadsetMonitor\HeadsetMonitor.csproj'
 
 dotnet publish $project `
     --configuration Release `
@@ -40,7 +33,7 @@ if ($LASTEXITCODE -ne 0) {
     throw "dotnet publish failed with exit code $LASTEXITCODE."
 }
 
-$publishedExe = Join-Path $publishDirectory 'HeadsetBatteryMonitor.exe'
+$publishedExe = Join-Path $publishDirectory 'HeadsetMonitor.exe'
 if (-not (Test-Path -LiteralPath $publishedExe -PathType Leaf)) {
     throw "The expected published executable was not produced: $publishedExe"
 }
@@ -62,7 +55,7 @@ if ([string]::IsNullOrWhiteSpace($InnoCompiler) -or -not (Test-Path -LiteralPath
 }
 
 New-Item -ItemType Directory -Force -Path $installerOutput | Out-Null
-$script = Join-Path $PSScriptRoot 'HeadsetBatteryMonitor.iss'
+$script = Join-Path $PSScriptRoot 'HeadsetMonitor.iss'
 & $InnoCompiler `
     "/DSourceDir=$publishDirectory" `
     "/DHeadsetControlDir=$HeadsetControlDirectory" `

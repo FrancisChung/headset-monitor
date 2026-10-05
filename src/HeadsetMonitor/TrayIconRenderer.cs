@@ -1,9 +1,9 @@
 using System.Drawing.Drawing2D;
 using System.Drawing.Imaging;
 using System.Runtime.InteropServices;
-using HeadsetBatteryMonitor.Core;
+using HeadsetMonitor.Core;
 
-namespace HeadsetBatteryMonitor;
+namespace HeadsetMonitor;
 
 internal static class TrayIconRenderer
 {
@@ -69,7 +69,7 @@ internal static class TrayIconRenderer
     private static Bitmap? LoadHeadphoneArtwork()
     {
         using var stream = typeof(TrayIconRenderer).Assembly
-            .GetManifestResourceStream("HeadsetBatteryMonitor.Icons.headphone.png");
+            .GetManifestResourceStream("HeadsetMonitor.Icons.headphone.png");
         return stream is null ? null : new Bitmap(stream);
     }
 

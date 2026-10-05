@@ -1,6 +1,6 @@
-using HeadsetBatteryMonitor.Core;
+using HeadsetMonitor.Core;
 
-namespace HeadsetBatteryMonitor.Backends;
+namespace HeadsetMonitor.Backends;
 
 public sealed class CompositeHeadsetBatterySource(params IHeadsetBatterySource[] sources) : IHeadsetBatterySource
 {

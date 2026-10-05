@@ -1,14 +1,14 @@
 using System.Text.Json;
-using HeadsetBatteryMonitor.Core;
+using HeadsetMonitor.Core;
 
-namespace HeadsetBatteryMonitor;
+namespace HeadsetMonitor;
 
 internal sealed class JsonSettingsStore
 {
     private static readonly JsonSerializerOptions JsonOptions = new() { WriteIndented = true };
     private readonly string _path = Path.Combine(
         Environment.GetFolderPath(Environment.SpecialFolder.LocalApplicationData),
-        "HeadsetBatteryMonitor",
+        "HeadsetMonitor",
         "settings.json");
 
     public AppSettings Load()

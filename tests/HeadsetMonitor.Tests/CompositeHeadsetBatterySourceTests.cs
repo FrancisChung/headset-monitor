@@ -1,7 +1,7 @@
-using HeadsetBatteryMonitor.Backends;
-using HeadsetBatteryMonitor.Core;
+using HeadsetMonitor.Backends;
+using HeadsetMonitor.Core;
 
-namespace HeadsetBatteryMonitor.Tests;
+namespace HeadsetMonitor.Tests;
 
 public sealed class CompositeHeadsetBatterySourceTests
 {
