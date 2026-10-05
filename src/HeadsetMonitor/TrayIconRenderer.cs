@@ -19,10 +19,14 @@ internal static class TrayIconRenderer
 
         var (text, colour) = GetPresentation(snapshot, settings);
         DrawTintedHeadphones(graphics, colour, size);
-        using var font = new Font("Segoe UI", text.Length > 2 ? 11 : 16, FontStyle.Bold, GraphicsUnit.Pixel);
+        using var font = CreateLargestFontThatFits(graphics, text, size - 3, size - 3);
         using var foreground = new SolidBrush(Color.White);
         using var outline = new SolidBrush(Color.FromArgb(210, Color.Black));
-        using var format = new StringFormat { Alignment = StringAlignment.Center, LineAlignment = StringAlignment.Center };
+        using var format = new StringFormat(StringFormat.GenericTypographic)
+        {
+            Alignment = StringAlignment.Center,
+            LineAlignment = StringAlignment.Center
+        };
         foreach (var offset in new[] { new PointF(-1, 0), new PointF(1, 0), new PointF(0, -1), new PointF(0, 1) })
             graphics.DrawString(text, font, outline, new RectangleF(offset.X, offset.Y, size, size), format);
         graphics.DrawString(text, font, foreground, new RectangleF(0, 0, size, size), format);
@@ -37,6 +41,20 @@ internal static class TrayIconRenderer
         {
             DestroyIcon(handle);
         }
+    }
+
+    private static Font CreateLargestFontThatFits(Graphics graphics, string text, int maxWidth, int maxHeight)
+    {
+        for (var fontSize = 24; fontSize >= 8; fontSize--)
+        {
+            var font = new Font("Segoe UI", fontSize, FontStyle.Bold, GraphicsUnit.Pixel);
+            var measured = graphics.MeasureString(text, font, int.MaxValue, StringFormat.GenericTypographic);
+            if (measured.Width <= maxWidth && measured.Height <= maxHeight)
+                return font;
+            font.Dispose();
+        }
+
+        return new Font("Segoe UI", 8, FontStyle.Bold, GraphicsUnit.Pixel);
     }
 
     private static void DrawTintedHeadphones(Graphics graphics, Color colour, int size)
