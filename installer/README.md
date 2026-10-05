@@ -3,7 +3,7 @@
 ## Prerequisites
 
 - Windows x64 with the .NET 10 SDK
-- Inno Setup 6 (`ISCC.exe` on `PATH`, in its default installation directory, or passed explicitly)
+- Inno Setup 6 or 7 (`ISCC.exe` on `PATH`, in its system-wide or per-user default installation directory, or passed explicitly)
 - The verified HeadsetControl inputs described in [`packaging/headsetcontrol/README.md`](../packaging/headsetcontrol/README.md)
 
 ## Build
@@ -12,6 +12,12 @@ From the repository root in PowerShell:
 
 ```powershell
 .\installer\build-installer.ps1 -AppVersion 0.1.0
+```
+
+The script automatically detects per-user Inno Setup 7 installations such as `%LocalAppData%\Programs\Inno Setup 7\ISCC.exe`. For a custom installation location, pass the compiler explicitly:
+
+```powershell
+.\installer\build-installer.ps1 -InnoCompiler 'C:\path\to\ISCC.exe'
 ```
 
 The script publishes a self-contained, single-file `win-x64` application, validates the required HeadsetControl executable, and creates:

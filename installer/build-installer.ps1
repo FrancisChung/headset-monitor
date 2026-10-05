@@ -44,14 +44,24 @@ if ([string]::IsNullOrWhiteSpace($InnoCompiler)) {
         $InnoCompiler = $command.Source
     }
     else {
-        $defaultCompiler = Join-Path ${env:ProgramFiles(x86)} 'Inno Setup 6\ISCC.exe'
-        if (Test-Path -LiteralPath $defaultCompiler -PathType Leaf) {
-            $InnoCompiler = $defaultCompiler
+        $candidateCompilers = @(
+            (Join-Path $env:LOCALAPPDATA 'Programs\Inno Setup 7\ISCC.exe'),
+            (Join-Path $env:ProgramFiles 'Inno Setup 7\ISCC.exe'),
+            (Join-Path ${env:ProgramFiles(x86)} 'Inno Setup 7\ISCC.exe'),
+            (Join-Path $env:LOCALAPPDATA 'Programs\Inno Setup 6\ISCC.exe'),
+            (Join-Path $env:ProgramFiles 'Inno Setup 6\ISCC.exe'),
+            (Join-Path ${env:ProgramFiles(x86)} 'Inno Setup 6\ISCC.exe')
+        )
+        foreach ($candidateCompiler in $candidateCompilers) {
+            if (Test-Path -LiteralPath $candidateCompiler -PathType Leaf) {
+                $InnoCompiler = $candidateCompiler
+                break
+            }
         }
     }
 }
 if ([string]::IsNullOrWhiteSpace($InnoCompiler) -or -not (Test-Path -LiteralPath $InnoCompiler -PathType Leaf)) {
-    throw 'Inno Setup 6 compiler (ISCC.exe) was not found. Install it or pass -InnoCompiler.'
+    throw 'Inno Setup compiler (ISCC.exe) was not found. Install Inno Setup 6 or 7, add ISCC.exe to PATH, or pass -InnoCompiler.'
 }
 
 New-Item -ItemType Directory -Force -Path $installerOutput | Out-Null
