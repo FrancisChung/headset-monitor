@@ -17,7 +17,8 @@ public static class HyperXProtocol
 
     private static readonly byte[] CloudIiHpRequest = CreateRequest(0x06, 0xff, 0xbb, 0x02);
     private static readonly byte[] CloudIiKingstonRequest = CreateKingstonCloudIiRequest();
-    private static readonly byte[] CloudIiiSRequest = CreateRequest(0x0c, 0x02, 0x03, 0x01, 0x00, 0x06);
+    private static readonly byte[] CloudIiiSRequest =
+        [0x0c, 0x02, 0x03, 0x01, 0x00, 0x06, .. new byte[58]];
 
     public static IReadOnlyList<HyperXDeviceProtocol> SupportedDevices { get; } =
     [
@@ -25,7 +26,8 @@ public static class HyperXProtocol
             CloudIiKingstonRequest, 7, ReadInputReportBeforeWrite: true),
         new(HpVendorId, 0x018b, "HyperX Cloud II Wireless", null, null, CloudIiHpRequest, 7),
         new(HpVendorId, 0x0696, "HyperX Cloud II Wireless", null, null, CloudIiHpRequest, 7),
-        new(HpVendorId, 0x06be, "HyperX Cloud III S Wireless", 0x01c0, 0x0001, CloudIiiSRequest, 6)
+        new(HpVendorId, 0x06be, "HyperX Cloud III S Wireless", 0x01c0, 0x0001, CloudIiiSRequest, 6),
+        new(HpVendorId, 0x02cc, "HyperX Cloud III S Wireless", 0x01c0, 0x0001, CloudIiiSRequest, 6)
     ];
 
     public static HyperXDeviceProtocol? Find(ushort vendorId, ushort productId) =>

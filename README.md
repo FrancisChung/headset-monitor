@@ -4,7 +4,7 @@ A Windows notification-area application for monitoring the HyperX Cloud II Wirel
 
 HyperX Cloud II and Cloud III S battery levels are read directly from their USB receivers using the protocol documented by [auto94/HyperX-Cloud-2-Battery-Monitor](https://github.com/auto94/HyperX-Cloud-2-Battery-Monitor). Logitech G933 remains handled by HeadsetControl. The sources are polled independently, so one backend failing does not discard readings returned by the other.
 
-Known HyperX receiver identities are HP Cloud II `03f0:018b` and `03f0:0696`, Kingston Cloud II `0951:1718`, and HP Cloud III S `03f0:06be`. These paths still require verification on the owner's physical hardware. Charging state is left unknown because the adopted battery queries do not establish it.
+Known HyperX receiver identities are HP Cloud II `03f0:018b` and `03f0:0696`, Kingston Cloud II `0951:1718`, and HP Cloud III S `03f0:06be` and `03f0:02cc`. The `02cc` variant has been verified on physical hardware; the other paths still require hardware verification. Charging state is left unknown because the adopted battery queries do not establish it.
 
 Implementation is in progress. The application expects a pinned Windows build of `headsetcontrol.exe` beside `HeadsetMonitor.exe` for non-HyperX devices; an advanced custom path will be supported for compatibility testing. HeadsetControl is not currently checked into this repository.
 

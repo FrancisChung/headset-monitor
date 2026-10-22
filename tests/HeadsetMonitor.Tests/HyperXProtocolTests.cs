@@ -4,10 +4,11 @@ namespace HeadsetMonitor.Tests;
 
 public sealed class HyperXProtocolTests
 {
-    [Test]
-    public void Cloud_iii_s_uses_verified_identity_endpoint_and_request()
+    [TestCase(0x06be)]
+    [TestCase(0x02cc)]
+    public void Cloud_iii_s_uses_verified_identity_endpoint_and_request(int productId)
     {
-        var protocol = HyperXProtocol.Find(0x03f0, 0x06be);
+        var protocol = HyperXProtocol.Find(0x03f0, (ushort)productId);
 
         Assert.That(protocol, Is.Not.Null);
         Assert.Multiple(() =>
@@ -16,6 +17,7 @@ public sealed class HyperXProtocolTests
             Assert.That(protocol.UsagePage, Is.EqualTo(0x01c0));
             Assert.That(protocol.Usage, Is.EqualTo(1));
             Assert.That(protocol.Request.Take(6), Is.EqualTo(new byte[] { 0x0c, 0x02, 0x03, 0x01, 0x00, 0x06 }));
+            Assert.That(protocol.Request.Length, Is.EqualTo(64));
             Assert.That(protocol.BatteryByteIndex, Is.EqualTo(6));
         });
     }
